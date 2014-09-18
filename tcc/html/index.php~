@@ -1,0 +1,31 @@
+<?php
+
+/*$conexao = mysql_connect("localhost", "root", "root") or die(mysql_error);
+
+if($conexao != null)
+{
+
+$db = mysql_select_db("fatec", $conexao);
+
+$nome = $_POST["nome"];
+$sobrenome = $_POST["sobrenome"];
+$email = $_POST["email"];
+$senha = $_POST["senha"];
+$curso = $_POST["curso"];
+$observacao = $_POST["observacao"];
+
+$query = "insert into aluno (nome,sobrenome,email,senha,curso,observacao) values ($nome, $sobrenome, $email, $senha, $curso, $observacao)";
+$query = mysql_query($query); 
+echo "<p>Dados Gravados com sucesso</p>";
+
+}
+else
+{
+	echo 'Falta conectar com o banco de dados';
+}
+*/
+
+	$con = mysql_connect("localhost", "root", "root");
+
+?>
+

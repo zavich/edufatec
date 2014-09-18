@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Sortable - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+  <script src="jquery/external/jquery/jquery.js"></script>
+  <script src="jquery/jquery-ui.js"></script>
+  <link rel="stylesheet" href="jquery/style.css">
+  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+
+  #r1, #r2, #r3, #r4   { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; background-color: gray; }
+  #q1, #q2, #q3, #q4   { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; background-color: orange }
+
+  .verde
+  {
+      background-color: green;
+  }
+
+  </style>
+ <script>
+
+
+  $(function(){
+
+      $("#q1, #q2, #q3, #q4").draggable({});
+      
+      $("#r1, #r2, #r3, #r4").droppable({
+
+
+
+        accept: "#q1, #q2, #q3, #q4",
+        activeClass: "ui-state-hover",
+        hoverClass: "ui-state-active",
+        drop: function( event, ui )
+        {
+          var id_questao  = ui.draggable.prop("id").replace("q", "");
+          var id_resposta = $(this).prop("id").replace("r", "");
+
+          if(id_questao == id_resposta)
+          {
+            $(this).addClass( "verde" ).html( "CERTO : Q "+id_questao+" / R "+id_resposta);
+          }
+          else
+          {
+            $(this).addClass( "verde" ).html( "ERRADO : Q "+id_questao+" / R "+id_resposta);
+          }
+          
+
+        },
+        out: function( event, ui )
+        {
+          $( this ).addClass( "ui-state-active" ).html( "Fora!" );
+        },
+
+      });
+
+
+  });
+
+  </script>
+</head>
+<body>
+
+<div id="q1">FUNCTION 1</div>
+<div id="q2">FUNCTION 2</div>
+<div id="q3">FUNCTION 3</div>
+<div id="q4">FUNCTION 4</div>
+
+<div id="r2">&nbsp;</div>
+<div id="r4">&nbsp;</div>
+<div id="r1">&nbsp;</div>
+<div id="r3">&nbsp;</div>
+
+ <!--
+<ul id="sortable">
+  
+  <li id="1" class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>TESTE1</li>
+  <li id="2" class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>TESTE2</li>
+  <li id="3" class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>TESTE3</li>
+  <li id="4" class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>TESTE4</li>
+  <li id="5" class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>TESTE5</li>
+  <li id="6" class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>TESTE6</li>
+    <!--<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>main (){</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>float a,b,c;</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>printf ("Digite o valor dos lados");</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>scanf ("%f%f%f", &a, &b, &c);</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>if (a>|b-c| && a< b+c && b>|a-c| && a< a+c && c>|b-a| && c< b+a){</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>}</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>if(a<|b-c| || a>b+c || b<|a-c| || b< a+c || c<|b-a| || c> b+a){</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>printf ("o triangulo nao existe");</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>]</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>system ("pause");</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>}</li>
+  
+</ul>-->
+ 
+ 
+</body>
+</html>
